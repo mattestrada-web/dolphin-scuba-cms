@@ -1,1 +1,67 @@
-export const schemaTypes = []
+import type {SchemaTypeDefinition} from 'sanity'
+
+import blockContent from './objects/blockContent'
+import faqItem from './objects/faqItem'
+import participant from './objects/participant'
+import seo from './objects/seo'
+import specValue from './objects/specValue'
+import addOn from './addOn'
+import brand from './brand'
+import booking from './booking'
+import carouselSlide from './carouselSlide'
+import category from './category'
+import departure from './departure'
+import destination from './destination'
+import homepage from './homepage'
+import itinerary from './itinerary'
+import landingPage from './landingPage'
+import product from './product'
+import productReference from './productReference'
+import scubaClassReference from './scubaClassReference'
+import seoPage from './seoPage'
+import spec from './spec'
+import staff from './staff'
+import swimLessonReference from './swimLessonReference'
+import trip from './trip'
+import tripInclusion from './tripInclusion'
+import tripPackage from './tripPackage'
+import tripReference from './tripReference'
+import useCase from './useCase'
+import vessel from './vessel'
+
+export const schemaTypes: SchemaTypeDefinition[] = [
+  // Shared (objects)
+  seo as SchemaTypeDefinition,
+  blockContent as SchemaTypeDefinition,
+  specValue as SchemaTypeDefinition,
+  faqItem as SchemaTypeDefinition,
+  participant as SchemaTypeDefinition,
+  // Products (core commerce graph)
+  product as SchemaTypeDefinition,
+  category as SchemaTypeDefinition,
+  brand as SchemaTypeDefinition,
+  spec as SchemaTypeDefinition,
+  useCase as SchemaTypeDefinition,
+  // Scuba (SEO + education)
+  seoPage as SchemaTypeDefinition,
+  // Travel (CMS = canonical; WeTravel = booking projection)
+  trip as SchemaTypeDefinition,
+  departure as SchemaTypeDefinition,
+  destination as SchemaTypeDefinition,
+  vessel as SchemaTypeDefinition,
+  tripPackage as SchemaTypeDefinition,
+  addOn as SchemaTypeDefinition,
+  itinerary as SchemaTypeDefinition,
+  tripInclusion as SchemaTypeDefinition,
+  booking as SchemaTypeDefinition,
+  staff as SchemaTypeDefinition,
+  // Site / pages
+  homepage as SchemaTypeDefinition,
+  landingPage as SchemaTypeDefinition,
+  carouselSlide as SchemaTypeDefinition,
+  // Legacy references
+  productReference as SchemaTypeDefinition,
+  tripReference as SchemaTypeDefinition,
+  scubaClassReference as SchemaTypeDefinition,
+  swimLessonReference as SchemaTypeDefinition,
+]
