@@ -21,6 +21,7 @@ import scubaClassReference from './scubaClassReference'
 import seoPage from './seoPage'
 import spec from './spec'
 import staff from './staff'
+import supplier from './supplier'
 import swimLessonReference from './swimLessonReference'
 import trip from './trip'
 import tripInclusion from './tripInclusion'
@@ -41,6 +42,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   category as SchemaTypeDefinition,
   brand as SchemaTypeDefinition,
   spec as SchemaTypeDefinition,
+  supplier as SchemaTypeDefinition,
   useCase as SchemaTypeDefinition,
   // Scuba (SEO + education)
   seoPage as SchemaTypeDefinition,

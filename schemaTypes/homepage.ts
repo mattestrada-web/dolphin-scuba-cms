@@ -41,6 +41,79 @@ export default defineType({
       validation: (Rule) => Rule.max(8).warning('Recommended maximum is 8 products'),
     }),
 
+    // SHOP BY BRAND SECTION
+    defineField({
+      name: 'shopByBrands',
+      title: '🏷️ Shop by Brand',
+      type: 'array',
+      description:
+        'Brand logos for the Shop by Brand section. Existing entries can stay as simple brand references, or use Brand Card items for homepage-specific presentation controls.',
+      of: [
+        defineArrayMember({type: 'reference', to: [{type: 'brand'}]}),
+        defineArrayMember({
+          name: 'homepageBrandCard',
+          title: 'Brand Card',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'brand',
+              title: 'Brand',
+              type: 'reference',
+              to: [{type: 'brand'}],
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'logoScale',
+              title: 'Logo Size',
+              type: 'number',
+              description:
+                'How much of the frame the logo fills (0.5–1). Use less than 1 if the logo feels too tight or visually dominant.',
+              initialValue: 1,
+              validation: (Rule) => Rule.min(0.5).max(1),
+            }),
+            defineField({
+              name: 'logoBackground',
+              title: 'Logo Background',
+              type: 'string',
+              description: 'Background treatment for this homepage card only.',
+              initialValue: 'white',
+              options: {
+                list: [
+                  {title: 'White', value: 'white'},
+                  {title: 'Transparent', value: 'transparent'},
+                  {title: 'Gray', value: 'gray'},
+                ],
+                layout: 'radio',
+              },
+            }),
+          ],
+            preview: {
+            select: {
+              title: 'brand.name',
+              media: 'brand.logo',
+              scale: 'logoScale',
+              background: 'logoBackground',
+            },
+            prepare({title, media, scale, background}: any) {
+              const details = [
+                scale && scale !== 1 ? `size ${scale}` : null,
+                background && background !== 'white' ? background : null,
+              ]
+                .filter(Boolean)
+                .join(', ')
+
+              return {
+                title: title || 'Brand Card',
+                subtitle: details || 'Default presentation',
+                media,
+              }
+            },
+          },
+        }),
+      ],
+      validation: (Rule) => Rule.max(8).warning('Maximum 8 brands for this section'),
+    }),
+
     // FEATURED TRIPS SECTION
     defineField({
       name: 'featuredTrips',
@@ -86,11 +159,12 @@ export default defineType({
       title: 'title',
       slideCount: 'carouselSlides.length',
       productCount: 'featuredProducts.length',
+      brandCount: 'shopByBrands.length',
     },
-    prepare({title, slideCount, productCount}: any) {
+    prepare({title, slideCount, productCount, brandCount}: any) {
       return {
         title: title || 'Homepage',
-        subtitle: `${slideCount || 0} slides, ${productCount || 0} featured products`,
+        subtitle: `${slideCount || 0} slides, ${productCount || 0} products, ${brandCount || 0} brands`,
       }
     },
   },

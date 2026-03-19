@@ -2,7 +2,9 @@ import {defineField, defineType} from 'sanity'
 
 /**
  * CATEGORY
- * Product category with optional parent for hierarchy; filters reference specs
+ * Product category with optional parent(s) for hierarchy/layout; filters reference specs.
+ * Multiple parents allow the same category to appear in several sections (e.g. Masks under both
+ * Masks, Snorkels & Fins and Spearfishing).
  */
 export default defineType({
   name: 'category',
@@ -26,11 +28,16 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'parent',
-      title: 'Parent Category',
-      type: 'reference',
-      to: [{type: 'category'}],
-      description: 'Leave empty for top-level categories',
+      name: 'categoryId',
+      title: 'Category ID',
+      type: 'string',
+    }),
+    defineField({
+      name: 'parents',
+      title: 'Parent Categories',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'category'}]}],
+      description: 'Where this category appears in the site (e.g. Masks under Masks/Fins and Spearfishing). Leave empty for top-level.',
     }),
     defineField({
       name: 'description',

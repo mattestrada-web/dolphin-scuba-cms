@@ -86,6 +86,9 @@ export default defineConfig({
                               .child(S.documentTypeList('swimLessonReference').title('Swim Lesson References')),
                           ])
                       ),
+                    S.listItem()
+                      .title('SEO Pages')
+                      .child(S.documentTypeList('seoPage').title('SEO Pages')),
                   ])
               ),
             S.divider(),
@@ -100,18 +103,8 @@ export default defineConfig({
                     S.listItem().title('Brands').child(S.documentTypeList('brand').title('Brands')),
                     S.listItem().title('Categories').child(S.documentTypeList('category').title('Categories')),
                     S.listItem().title('Specs').child(S.documentTypeList('spec').title('Specs')),
+                    S.listItem().title('Suppliers').child(S.documentTypeList('supplier').title('Suppliers')),
                     S.listItem().title('Use Cases').child(S.documentTypeList('useCase').title('Use Cases')),
-                  ])
-              ),
-            S.divider(),
-            // ─── SCUBA (SEO pages) ───
-            S.listItem()
-              .title('Scuba')
-              .child(
-                S.list()
-                  .title('Scuba')
-                  .items([
-                    S.listItem().title('SEO Pages').child(S.documentTypeList('seoPage').title('SEO Pages')),
                   ])
               ),
             S.divider(),

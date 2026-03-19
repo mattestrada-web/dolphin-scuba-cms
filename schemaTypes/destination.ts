@@ -58,6 +58,20 @@ export default defineType({
       description: 'Current, visibility, etc.',
     }),
     defineField({
+      name: 'marineLifeHighlights',
+      title: 'Marine Life Highlights',
+      type: 'array',
+      of: [{type: 'string'}],
+      description: 'Notable species (e.g. Manta rays, Reef sharks, Sea turtles)',
+    }),
+    defineField({
+      name: 'signatureSites',
+      title: 'Signature Sites',
+      type: 'array',
+      of: [{type: 'string'}],
+      description: 'Famous dive sites (e.g. Blue Corner, Shark Reef)',
+    }),
+    defineField({
       name: 'useCases',
       title: 'Use Cases',
       type: 'array',

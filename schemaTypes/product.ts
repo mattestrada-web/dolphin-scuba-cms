@@ -1,4 +1,5 @@
 import {defineArrayMember, defineField, defineType} from 'sanity'
+import CategoryAutoLink from '../components/CategoryAutoLink'
 
 /**
  * PRODUCT (CORE)
@@ -10,8 +11,8 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
+      name: 'name',
+      title: 'Name',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
@@ -20,10 +21,15 @@ export default defineType({
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'title',
+        source: 'name',
         maxLength: 96,
       },
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'handle',
+      title: 'Handle',
+      type: 'string',
     }),
     defineField({
       name: 'sku',
@@ -32,16 +38,61 @@ export default defineType({
       description: 'Canonical or parent SKU',
     }),
     defineField({
+      name: 'lightspeedProductId',
+      title: 'Lightspeed Product ID',
+      type: 'string',
+      description: 'Product id from Lightspeed POS; used by the integration to match this document to the source record.',
+    }),
+    defineField({
       name: 'brand',
       title: 'Brand',
       type: 'reference',
       to: [{type: 'brand'}],
     }),
     defineField({
-      name: 'category',
-      title: 'Category',
-      type: 'reference',
-      to: [{type: 'category'}],
+      name: 'categories',
+      title: 'Categories',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'category'}]}],
+      components: {
+        input: CategoryAutoLink,
+      },
+      description: 'Product can appear in multiple categories (e.g. both Exposure Protection and Wetsuits).',
+      validation: (Rule) =>
+        Rule.custom((categories: any[] | undefined) => {
+          const triggerIds = [
+            'cdeb2713-a87e-4939-bc7d-b808f08cb609',
+            '63422239-2494-449a-8f55-59678f95565d',
+            'bf303b98-27e0-47e6-90a6-3e2e73124018',
+          ]
+
+          const hasTrigger = categories?.some((category) => triggerIds.includes(category?._ref))
+          const hasLifeSupport = categories?.some(
+            (category) => category?._ref === '10c65c0e-720c-4a9b-a6ee-4d6628383b7b'
+          )
+
+          if (hasTrigger && !hasLifeSupport) {
+            return 'Products in Consoles, BCs, or Regulators must include Life Support'
+          }
+
+          return true
+        }),
+    }),
+    defineField({
+      name: 'suppliers',
+      title: 'Suppliers',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'supplier'}]}],
+    }),
+    defineField({
+      name: 'familyId',
+      title: 'Family ID',
+      type: 'string',
+    }),
+    defineField({
+      name: 'familyName',
+      title: 'Family Name',
+      type: 'string',
     }),
     defineField({
       name: 'description',
@@ -98,11 +149,17 @@ export default defineType({
     }),
   ],
   preview: {
-    select: {title: 'title', slug: 'slug.current', media: 'media.0'},
-    prepare({title, slug, media}) {
+    select: {
+      name: 'name',
+      slug: 'slug.current',
+      media: 'media.0',
+      familyName: 'familyName',
+    },
+    prepare({name, slug, media, familyName}) {
+      const parts = [familyName, slug ? `/${slug}` : null].filter(Boolean)
       return {
-        title,
-        subtitle: slug ? `/${slug}` : undefined,
+        title: name,
+        subtitle: parts.length ? parts.join(' · ') : undefined,
         media,
       }
     },

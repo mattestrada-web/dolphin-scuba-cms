@@ -1,12 +1,12 @@
 import {defineField, defineType} from 'sanity'
 
 /**
- * BRAND
- * Manufacturer/brand for products
+ * SUPPLIER
+ * Supplier/vendor; referenced by brands and products
  */
 export default defineType({
-  name: 'brand',
-  title: 'Brand',
+  name: 'supplier',
+  title: 'Supplier',
   type: 'document',
   fields: [
     defineField({
@@ -26,8 +26,8 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'brandId',
-      title: 'Brand ID',
+      name: 'supplierId',
+      title: 'Supplier ID',
       type: 'string',
     }),
     defineField({
@@ -37,29 +37,16 @@ export default defineType({
       rows: 3,
     }),
     defineField({
-      name: 'logo',
-      title: 'Logo',
-      type: 'image',
-      options: {hotspot: true},
-    }),
-    defineField({
       name: 'website',
       title: 'Website',
       type: 'url',
     }),
-    defineField({
-      name: 'suppliers',
-      title: 'Suppliers',
-      type: 'array',
-      of: [{type: 'reference', to: [{type: 'supplier'}]}],
-    }),
   ],
   preview: {
-    select: {name: 'name', media: 'logo'},
-    prepare({name, media}) {
+    select: {name: 'name'},
+    prepare({name}) {
       return {
         title: name,
-        media,
       }
     },
   },

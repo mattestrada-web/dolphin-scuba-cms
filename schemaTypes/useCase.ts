@@ -56,11 +56,6 @@ export default defineType({
       type: 'array',
       of: [{type: 'reference', to: [{type: 'category'}]}],
     }),
-    defineField({
-      name: 'seo',
-      title: 'SEO',
-      type: 'seo',
-    }),
   ],
   preview: {
     select: {name: 'name', slug: 'slug.current', media: 'heroImage'},
