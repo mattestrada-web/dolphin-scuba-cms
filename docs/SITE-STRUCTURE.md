@@ -80,3 +80,20 @@ Use each landing’s `slug` field if you want different paths (e.g. `store` inst
 - **Departure** = one date range + capacity + packages/add-ons; maps 1:1 to WeTravel. Push to WeTravel for booking; pull bookings back.
 - **Booking** = read-only, ingested from WeTravel API.
 - Trips landing page (Site → Landing Pages → Trips) features documents from Travel → Trips.
+
+## Delivery model for website traffic
+
+For public website delivery, do **not** treat Sanity as a high-chatter browser API.
+
+Use this boundary:
+
+- **Sanity** = editorial source of truth + hosted assets
+- **Flipper2** = aggregation/sync/enrichment layer
+- **dolphin-website** = renderer
+
+That means:
+
+- Homepage, shop rails, and other merchandising surfaces should prefer **server-side cached payloads** or build/revalidation fetches.
+- The frontend should **not** make one Sanity query per card/module in the browser.
+- Product/shop experiences should eventually consume a **single aggregated payload** from Flipper2 that merges Sanity merchandising with ERP/Ecwid commerce data.
+- Sanity asset URLs are fine to serve publicly once imported; the expensive pattern to avoid is lots of runtime content queries from the browser.

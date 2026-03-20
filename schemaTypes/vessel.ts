@@ -41,6 +41,13 @@ export default defineType({
       type: 'blockContent',
     }),
     defineField({
+      name: 'destinations',
+      title: 'Destinations',
+      type: 'array',
+      description: 'Destinations this vessel or resort serves.',
+      of: [{type: 'reference', to: [{type: 'destination'}]}],
+    }),
+    defineField({
       name: 'amenities',
       title: 'Amenities',
       type: 'array',
@@ -74,11 +81,12 @@ export default defineType({
     }),
   ],
   preview: {
-    select: {name: 'name', type: 'type', media: 'media.0'},
-    prepare({name, type, media}) {
+    select: {name: 'name', type: 'type', destinationCount: 'destinations.length', media: 'media.0'},
+    prepare({name, type, destinationCount, media}) {
+      const parts = [type, destinationCount ? `${destinationCount} destinations` : null].filter(Boolean)
       return {
         title: name,
-        subtitle: type ?? undefined,
+        subtitle: parts.length ? parts.join(' · ') : undefined,
         media,
       }
     },

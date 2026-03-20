@@ -38,6 +38,13 @@ export default defineType({
       description: 'Canonical or parent SKU',
     }),
     defineField({
+      name: 'supplierCode',
+      title: 'Supplier Code',
+      type: 'string',
+      description:
+        'Secondary supervised match field used during upserts and cross-system reconciliation.',
+    }),
+    defineField({
       name: 'lightspeedProductId',
       title: 'Lightspeed Product ID',
       type: 'string',
@@ -106,6 +113,14 @@ export default defineType({
       rows: 2,
     }),
     defineField({
+      name: 'featureBullets',
+      title: 'Feature Bullets',
+      type: 'array',
+      description: 'Short merchandising callouts used across cards and detail pages.',
+      of: [{type: 'string'}],
+      validation: (Rule) => Rule.max(6).warning('Keep feature bullets concise'),
+    }),
+    defineField({
       name: 'media',
       title: 'Media',
       type: 'array',
@@ -146,6 +161,13 @@ export default defineType({
       name: 'seo',
       title: 'SEO',
       type: 'seo',
+    }),
+    defineField({
+      name: 'merchandisingNotes',
+      title: 'Merchandising Notes',
+      type: 'text',
+      rows: 3,
+      description: 'Internal notes for merchandisers and content editors. Not rendered on the website.',
     }),
   ],
   preview: {

@@ -12,17 +12,21 @@ import carouselSlide from './carouselSlide'
 import category from './category'
 import departure from './departure'
 import destination from './destination'
+import featuredProductItem from './featuredProductItem'
 import homepage from './homepage'
 import itinerary from './itinerary'
 import landingPage from './landingPage'
 import product from './product'
 import productReference from './productReference'
+import region from './region'
 import scubaClassReference from './scubaClassReference'
 import seoPage from './seoPage'
 import spec from './spec'
 import staff from './staff'
 import supplier from './supplier'
 import swimLessonReference from './swimLessonReference'
+import travelExplorerItem from './travelExplorerItem'
+import travelTheme from './travelTheme'
 import trip from './trip'
 import tripInclusion from './tripInclusion'
 import tripPackage from './tripPackage'
@@ -37,6 +41,8 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   specValue as SchemaTypeDefinition,
   faqItem as SchemaTypeDefinition,
   participant as SchemaTypeDefinition,
+  featuredProductItem as SchemaTypeDefinition,
+  travelExplorerItem as SchemaTypeDefinition,
   // Products (core commerce graph)
   product as SchemaTypeDefinition,
   category as SchemaTypeDefinition,
@@ -50,6 +56,8 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   trip as SchemaTypeDefinition,
   departure as SchemaTypeDefinition,
   destination as SchemaTypeDefinition,
+  region as SchemaTypeDefinition,
+  travelTheme as SchemaTypeDefinition,
   vessel as SchemaTypeDefinition,
   tripPackage as SchemaTypeDefinition,
   addOn as SchemaTypeDefinition,

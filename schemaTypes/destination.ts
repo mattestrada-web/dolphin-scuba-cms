@@ -25,13 +25,22 @@ export default defineType({
     defineField({
       name: 'region',
       title: 'Region',
-      type: 'string',
-      description: 'e.g. Caribbean, Pacific',
+      type: 'reference',
+      to: [{type: 'region'}],
+      description: 'Primary editorial region for this destination.',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'country',
       title: 'Country',
       type: 'string',
+    }),
+    defineField({
+      name: 'themes',
+      title: 'Travel Themes',
+      type: 'array',
+      description: 'Experience-based themes this destination supports.',
+      of: [{type: 'reference', to: [{type: 'travelTheme'}]}],
     }),
     defineField({
       name: 'description',
@@ -97,7 +106,7 @@ export default defineType({
     }),
   ],
   preview: {
-    select: {name: 'name', region: 'region', media: 'media.0'},
+    select: {name: 'name', region: 'region.name', media: 'media.0'},
     prepare({name, region, media}) {
       return {
         title: name,

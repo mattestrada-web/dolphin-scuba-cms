@@ -36,8 +36,8 @@ export default defineType({
       name: 'featuredProducts',
       title: '⭐ Featured Products',
       type: 'array',
-      description: 'Select from the Products catalog (Site → Products)',
-      of: [defineArrayMember({type: 'reference', to: [{type: 'product'}]})],
+      description: 'Select products and optionally customize how they appear on the homepage.',
+      of: [defineArrayMember({type: 'featuredProductItem'})],
       validation: (Rule) => Rule.max(8).warning('Recommended maximum is 8 products'),
     }),
 
@@ -122,6 +122,14 @@ export default defineType({
       description: 'Select from Travel → Trips (canonical trip intelligence)',
       of: [defineArrayMember({type: 'reference', to: [{type: 'trip'}]})],
       validation: (Rule) => Rule.max(6).warning('Recommended maximum is 6 trips'),
+    }),
+    defineField({
+      name: 'travelExplorerItems',
+      title: '🌍 Travel Explorer Items',
+      type: 'array',
+      description: 'Choose the geographic regions and travel themes featured in discovery surfaces.',
+      of: [defineArrayMember({type: 'travelExplorerItem'})],
+      validation: (Rule) => Rule.max(8).warning('Recommended maximum is 8 items'),
     }),
 
     // FEATURED SCUBA CLASSES SECTION

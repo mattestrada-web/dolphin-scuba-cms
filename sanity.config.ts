@@ -118,6 +118,8 @@ export default defineConfig({
                     S.listItem().title('Trips').child(S.documentTypeList('trip').title('Trips')),
                     S.listItem().title('Departures').child(S.documentTypeList('departure').title('Departures')),
                     S.listItem().title('Destinations').child(S.documentTypeList('destination').title('Destinations')),
+                    S.listItem().title('Regions').child(S.documentTypeList('region').title('Regions')),
+                    S.listItem().title('Themes').child(S.documentTypeList('travelTheme').title('Themes')),
                     S.listItem().title('Vessels / Resorts').child(S.documentTypeList('vessel').title('Vessels')),
                     S.listItem().title('Packages').child(S.documentTypeList('tripPackage').title('Packages')),
                     S.listItem().title('Add-ons').child(S.documentTypeList('addOn').title('Add-ons')),

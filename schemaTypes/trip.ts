@@ -41,6 +41,8 @@ export default defineType({
       title: 'Destination',
       type: 'reference',
       to: [{type: 'destination'}],
+      description: 'Required so every trip resolves to a destination and therefore to a region.',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'vessel',
@@ -136,11 +138,18 @@ export default defineType({
     }),
   ],
   preview: {
-    select: {title: 'title', slug: 'slug.current', destination: 'destination', media: 'media.0'},
-    prepare({title, slug, destination, media}) {
+    select: {
+      title: 'title',
+      slug: 'slug.current',
+      destination: 'destination.name',
+      region: 'destination.region.name',
+      media: 'media.0',
+    },
+    prepare({title, slug, destination, region, media}) {
+      const parts = [slug ? `/${slug}` : null, destination, region].filter(Boolean)
       return {
         title,
-        subtitle: slug ? `/${slug}` : undefined,
+        subtitle: parts.length ? parts.join(' · ') : undefined,
         media,
       }
     },

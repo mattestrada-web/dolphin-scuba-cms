@@ -10,7 +10,7 @@ const PAGE_TYPES = [
   {title: 'Trips', value: 'trips'},
   {title: 'Scuba Classes', value: 'classes'},
   {title: 'Swim Lessons', value: 'swim'},
-] as const
+]
 
 export default defineType({
   name: 'landingPage',
@@ -65,7 +65,7 @@ export default defineType({
       name: 'featuredProducts',
       title: 'Featured Products',
       type: 'array',
-      of: [defineArrayMember({type: 'reference', to: [{type: 'product'}]})],
+      of: [defineArrayMember({type: 'featuredProductItem'})],
       hidden: ({document}) => document?.pageType !== 'shop',
       validation: (Rule) => Rule.max(12),
     }),
