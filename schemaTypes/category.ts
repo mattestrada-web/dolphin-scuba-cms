@@ -46,6 +46,13 @@ export default defineType({
       rows: 3,
     }),
     defineField({
+      name: 'imageAsset',
+      title: 'Image Asset',
+      type: 'reference',
+      to: [{type: 'imageAsset'}],
+      description: 'Curated category image for homepage and merchandising surfaces.',
+    }),
+    defineField({
       name: 'seoDescription',
       title: 'SEO Description',
       type: 'text',

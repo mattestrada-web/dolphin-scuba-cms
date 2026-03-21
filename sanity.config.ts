@@ -65,27 +65,9 @@ export default defineConfig({
                     S.listItem()
                       .title('Carousel Slides')
                       .child(S.documentTypeList('carouselSlide').title('Carousel Slides')),
-                    // Featured content: pools you pick from when editing Homepage (and landings)
                     S.listItem()
-                      .title('Featured content (Homepage cards)')
-                      .child(
-                        S.list()
-                          .title('Featured content')
-                          .items([
-                            S.listItem()
-                              .title('Product References')
-                              .child(S.documentTypeList('productReference').title('Product References')),
-                            S.listItem()
-                              .title('Trip References')
-                              .child(S.documentTypeList('tripReference').title('Trip References')),
-                            S.listItem()
-                              .title('Scuba Class References')
-                              .child(S.documentTypeList('scubaClassReference').title('Scuba Class References')),
-                            S.listItem()
-                              .title('Swim Lesson References')
-                              .child(S.documentTypeList('swimLessonReference').title('Swim Lesson References')),
-                          ])
-                      ),
+                      .title('Image Library')
+                      .child(S.documentTypeList('imageAsset').title('Image Library')),
                     S.listItem()
                       .title('SEO Pages')
                       .child(S.documentTypeList('seoPage').title('SEO Pages')),

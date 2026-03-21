@@ -49,10 +49,17 @@ export default defineType({
     defineField({
       name: 'image',
       title: 'Image',
-      type: 'image',
       description: 'Primary image used for homepage avatars and travel suggestion cards.',
+      type: 'image',
       options: {hotspot: true},
       fields: [{name: 'alt', type: 'string', title: 'Alt text'}],
+    }),
+    defineField({
+      name: 'imageAsset',
+      title: 'Reusable Image Asset',
+      type: 'reference',
+      to: [{type: 'imageAsset'}],
+      description: 'Optional reusable image record. Frontend should prefer this over the static image when present.',
     }),
     defineField({
       name: 'sortOrder',
@@ -72,13 +79,14 @@ export default defineType({
     select: {
       title: 'name',
       subtitle: 'travelFilterValue',
-      media: 'image',
+      mediaAsset: 'imageAsset.image',
+      mediaRaw: 'image',
     },
-    prepare({title, subtitle, media}) {
+    prepare({title, subtitle, mediaAsset, mediaRaw}) {
       return {
         title,
         subtitle: subtitle ? `Filter: ${subtitle}` : undefined,
-        media,
+        media: mediaAsset || mediaRaw,
       }
     },
   },

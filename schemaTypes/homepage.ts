@@ -38,7 +38,16 @@ export default defineType({
       type: 'array',
       description: 'Select products and optionally customize how they appear on the homepage.',
       of: [defineArrayMember({type: 'featuredProductItem'})],
-      validation: (Rule) => Rule.max(8).warning('Recommended maximum is 8 products'),
+      validation: (Rule) => Rule.max(20).warning('Recommended maximum is 20 products'),
+    }),
+
+    defineField({
+      name: 'featuredCategories',
+      title: '🗂️ Featured Categories',
+      type: 'array',
+      description: 'Select the categories to feature on the homepage in display order.',
+      of: [defineArrayMember({type: 'reference', to: [{type: 'category'}]})],
+      validation: (Rule) => Rule.max(8).warning('Recommended maximum is 8 categories'),
     }),
 
     // SHOP BY BRAND SECTION
@@ -129,7 +138,7 @@ export default defineType({
       type: 'array',
       description: 'Choose the geographic regions and travel themes featured in discovery surfaces.',
       of: [defineArrayMember({type: 'travelExplorerItem'})],
-      validation: (Rule) => Rule.max(8).warning('Recommended maximum is 8 items'),
+      validation: (Rule) => Rule.max(6).warning('Recommended maximum is 6 items'),
     }),
 
     // FEATURED SCUBA CLASSES SECTION
@@ -167,12 +176,13 @@ export default defineType({
       title: 'title',
       slideCount: 'carouselSlides.length',
       productCount: 'featuredProducts.length',
+      categoryCount: 'featuredCategories.length',
       brandCount: 'shopByBrands.length',
     },
-    prepare({title, slideCount, productCount, brandCount}: any) {
+    prepare({title, slideCount, productCount, categoryCount, brandCount}: any) {
       return {
         title: title || 'Homepage',
-        subtitle: `${slideCount || 0} slides, ${productCount || 0} products, ${brandCount || 0} brands`,
+        subtitle: `${slideCount || 0} slides, ${productCount || 0} products, ${categoryCount || 0} categories, ${brandCount || 0} brands`,
       }
     },
   },

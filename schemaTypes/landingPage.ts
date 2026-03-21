@@ -67,7 +67,7 @@ export default defineType({
       type: 'array',
       of: [defineArrayMember({type: 'featuredProductItem'})],
       hidden: ({document}) => document?.pageType !== 'shop',
-      validation: (Rule) => Rule.max(12),
+      validation: (Rule) => Rule.max(20),
     }),
     defineField({
       name: 'featuredTrips',

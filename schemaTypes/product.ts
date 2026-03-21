@@ -121,10 +121,28 @@ export default defineType({
       validation: (Rule) => Rule.max(6).warning('Keep feature bullets concise'),
     }),
     defineField({
+      name: 'imageAsset',
+      title: 'Image Asset Override',
+      type: 'reference',
+      to: [{type: 'imageAsset'}],
+      description: 'Optional curated merchandising image. Frontend should prefer this over Lightspeed image URLs when present.',
+    }),
+    defineField({
+      name: 'lightspeedImageUrls',
+      title: 'Lightspeed Image URLs',
+      type: 'array',
+      of: [{type: 'url'}],
+      description: 'Operational product image URLs synced from Lightspeed and served from the Lightspeed CDN.',
+    }),
+    defineField({
       name: 'media',
       title: 'Media',
       type: 'array',
       of: [
+        defineArrayMember({
+          type: 'reference',
+          to: [{type: 'imageAsset'}],
+        }),
         defineArrayMember({
           type: 'image',
           options: {hotspot: true},
@@ -174,15 +192,17 @@ export default defineType({
     select: {
       name: 'name',
       slug: 'slug.current',
-      media: 'media.0',
+      imageAsset: 'imageAsset.image',
+      mediaAsset: 'media.0.image',
+      mediaRaw: 'media.0',
       familyName: 'familyName',
     },
-    prepare({name, slug, media, familyName}) {
+    prepare({name, slug, imageAsset, mediaAsset, mediaRaw, familyName}) {
       const parts = [familyName, slug ? `/${slug}` : null].filter(Boolean)
       return {
         title: name,
         subtitle: parts.length ? parts.join(' · ') : undefined,
-        media,
+        media: imageAsset || mediaAsset || mediaRaw,
       }
     },
   },

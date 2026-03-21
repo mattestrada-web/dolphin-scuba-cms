@@ -14,10 +14,10 @@ import departure from './departure'
 import destination from './destination'
 import featuredProductItem from './featuredProductItem'
 import homepage from './homepage'
+import imageAsset from './imageAsset'
 import itinerary from './itinerary'
 import landingPage from './landingPage'
 import product from './product'
-import productReference from './productReference'
 import region from './region'
 import scubaClassReference from './scubaClassReference'
 import seoPage from './seoPage'
@@ -30,7 +30,6 @@ import travelTheme from './travelTheme'
 import trip from './trip'
 import tripInclusion from './tripInclusion'
 import tripPackage from './tripPackage'
-import tripReference from './tripReference'
 import useCase from './useCase'
 import vessel from './vessel'
 
@@ -43,6 +42,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   participant as SchemaTypeDefinition,
   featuredProductItem as SchemaTypeDefinition,
   travelExplorerItem as SchemaTypeDefinition,
+  imageAsset as SchemaTypeDefinition,
   // Products (core commerce graph)
   product as SchemaTypeDefinition,
   category as SchemaTypeDefinition,
@@ -69,9 +69,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   homepage as SchemaTypeDefinition,
   landingPage as SchemaTypeDefinition,
   carouselSlide as SchemaTypeDefinition,
-  // Legacy references
-  productReference as SchemaTypeDefinition,
-  tripReference as SchemaTypeDefinition,
+  // Transitional references for swim/classes until canonical types exist
   scubaClassReference as SchemaTypeDefinition,
   swimLessonReference as SchemaTypeDefinition,
 ]

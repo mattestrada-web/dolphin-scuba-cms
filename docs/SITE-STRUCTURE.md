@@ -2,24 +2,23 @@
 
 How the Studio is organized and how it maps to the website.
 
-## How reference fields work (Homepage cards)
+## How reference fields work
 
-You **don’t** “pull into a folder.” It works the other way:
+Homepage and landing-page merchandising fields should point **directly** at the canonical document types.
 
-1. **Homepage** (and landings) have **reference fields** — e.g. “Featured Products”, “Featured Trips”, “Featured Scuba Classes”, “Featured Swim Lessons”.
-2. Each of those fields stores **pointers** to other documents (by ID). When you’re editing the Homepage, the field shows a **reference input**: you search or browse and **pick** which products, trips, or classes to feature.
-3. The **lists in the desk** (e.g. under “Featured content (Homepage cards)”) are just **where those documents live** — where you create and edit them. The Homepage doesn’t “pull” them anywhere; it only stores references to whichever documents you chose.
+That means:
 
-So: **create/edit the items** in the right list (Products, Trips, or under Site → Featured content for class/lesson refs), then **open Homepage** and use the reference fields to select which ones appear in each card section. One list per type is enough; no separate “folder” per section.
+1. Create or edit the real document in its home section.
+2. Open `Homepage` or the relevant `Landing Page`.
+3. Add a direct reference there.
 
-**Current setup:**
+Current intended flow:
 
-- **Featured Products** → pick from **Products** (main catalog).
-- **Featured Trips** → pick from **Travel → Trips** (canonical trips).
-- **Featured Scuba Classes** → pick from **Site → Featured content → Scuba Class References** (until a full Classes type exists).
-- **Featured Swim Lessons** → pick from **Site → Featured content → Swim Lesson References** (until a full Swim type exists).
+- **Featured Products** → direct references to **Products**
+- **Featured Trips** → direct references to **Travel → Trips**
+- **Featured travel discovery items** → direct references to **Travel → Regions** or **Travel → Themes**
 
-Product References and Trip References are still under Featured content for legacy/sync; the Homepage itself uses the main Product and Trip catalogs.
+For swim and scuba classes, the long-term direction is the same: direct references from homepage/landing documents into the canonical class/lesson types once those models are ready. Avoid building extra “reference of a reference” layers unless a sync/integration workflow truly requires it.
 
 ## Studio desk order
 
@@ -33,7 +32,6 @@ Product References and Trip References are still under Featured content for lega
 | → → Scuba Classes | Featured classes, intro, hero | `/classes` |
 | → → Swim Lessons | Featured swim lessons, intro, hero | `/swim` |
 | → Carousel Slides | Reusable slides (used by Homepage) | — |
-| → Featured content (Homepage cards) | Product / Trip / Scuba Class / Swim Lesson references — where you create the items that can be *picked* on Homepage (and landings) | — |
 | **Products** | Catalog; each product = one dynamic page | `/shop/[slug]` |
 | **Scuba** | SEO / programmatic pages | `/best/...` or as configured |
 | **Travel** | Trips (master), departures, destinations, vessels, packages, add-ons, itineraries, bookings | `/trips/[slug]` from trip.slug |
@@ -42,7 +40,7 @@ Product References and Trip References are still under Featured content for lega
 ## Workflows
 
 - **Editing the homepage**  
-  Site → Homepage. Configure carousel and featured products/trips/classes/lessons. Featured products come from the main **Products** list.
+  Site → Homepage. Configure carousel and featured products/trips/classes/lessons using direct references to the canonical documents.
 
 - **Editing a section landing (e.g. Shop)**  
   Site → Landing Pages → Shop / Webstore. Set hero, intro, and featured products. Same products appear in the catalog and on dynamic product pages.

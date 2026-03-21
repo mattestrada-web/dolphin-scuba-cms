@@ -102,6 +102,10 @@ export default defineType({
       type: 'array',
       of: [
         defineArrayMember({
+          type: 'reference',
+          to: [{type: 'imageAsset'}],
+        }),
+        defineArrayMember({
           type: 'image',
           options: {hotspot: true},
           fields: [{name: 'alt', type: 'string', title: 'Alt text'}],
@@ -143,14 +147,15 @@ export default defineType({
       slug: 'slug.current',
       destination: 'destination.name',
       region: 'destination.region.name',
-      media: 'media.0',
+      mediaAsset: 'media.0.image',
+      mediaRaw: 'media.0',
     },
-    prepare({title, slug, destination, region, media}) {
+    prepare({title, slug, destination, region, mediaAsset, mediaRaw}) {
       const parts = [slug ? `/${slug}` : null, destination, region].filter(Boolean)
       return {
         title,
         subtitle: parts.length ? parts.join(' · ') : undefined,
-        media,
+        media: mediaAsset || mediaRaw,
       }
     },
   },
