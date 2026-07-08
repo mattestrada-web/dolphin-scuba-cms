@@ -56,9 +56,8 @@ export default defineType({
     defineField({
       name: 'ssiThumbnail',
       title: 'SSI Thumbnail',
-      type: 'image',
-      description: 'SSI certification card or class image',
-      options: {hotspot: true},
+      type: 'url',
+      description: 'URL to SSI certification card or class image',
     }),
 
     defineField({
@@ -126,9 +125,8 @@ export default defineType({
     select: {
       title: 'title',
       level: 'skillLevel',
-      media: 'ssiThumbnail',
     },
-    prepare({title, level, media}: any) {
+    prepare({title, level}: any) {
       const levels: Record<string, string> = {
         beginner: 'Beginner',
         intermediate: 'Intermediate',
@@ -138,7 +136,6 @@ export default defineType({
       return {
         title,
         subtitle: levels[level] || '',
-        media,
       }
     },
   },
