@@ -121,6 +121,18 @@ export default defineConfig({
                     S.listItem()
                       .title('Classes')
                       .child(S.documentTypeList('scubaClass').title('Classes')),
+                    S.listItem()
+                      .title('Policies')
+                      .child(S.documentTypeList('scubaCancellationPolicy').title('Policies')),
+                    S.listItem()
+                      .title('Dive Professionals')
+                      .child(S.list().title('Dive Professionals').items([])),
+                    S.listItem()
+                      .title('Schedules')
+                      .child(S.list().title('Schedules').items([])),
+                    S.listItem()
+                      .title('Locations')
+                      .child(S.list().title('Locations').items([])),
                   ])
               ),
             S.divider(),
