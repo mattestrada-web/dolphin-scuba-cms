@@ -119,6 +119,14 @@ export default defineType({
       of: [{type: 'block'}],
       description: 'Class-specific cancellation terms (rich text)',
     }),
+
+    defineField({
+      name: 'sawyerWidgetEmbed',
+      title: 'Sawyer Widget Embed Code',
+      type: 'text',
+      description: 'Paste the Sawyer booking widget embed code (HTML/script)',
+      rows: 5,
+    }),
   ],
 
   preview: {
