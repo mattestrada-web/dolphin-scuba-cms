@@ -19,6 +19,7 @@ import itinerary from './itinerary'
 import landingPage from './landingPage'
 import product from './product'
 import region from './region'
+import scubaClass from './scubaClass'
 import scubaClassReference from './scubaClassReference'
 import seoPage from './seoPage'
 import spec from './spec'
@@ -32,6 +33,8 @@ import tripInclusion from './tripInclusion'
 import tripPackage from './tripPackage'
 import useCase from './useCase'
 import vessel from './vessel'
+import location from './location'
+import brandMedia from './brandMedia'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   // Shared (objects)
@@ -69,7 +72,12 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   homepage as SchemaTypeDefinition,
   landingPage as SchemaTypeDefinition,
   carouselSlide as SchemaTypeDefinition,
+  // Scuba
+  scubaClass as SchemaTypeDefinition,
   // Transitional references for swim/classes until canonical types exist
   scubaClassReference as SchemaTypeDefinition,
   swimLessonReference as SchemaTypeDefinition,
+  // Operations
+  location as SchemaTypeDefinition,
+  brandMedia as SchemaTypeDefinition,
 ]

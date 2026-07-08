@@ -111,7 +111,20 @@ export default defineConfig({
                   ])
               ),
             S.divider(),
-            // ─── OPERATIONS (staff for Travel/Classes) ───
+            // ─── SCUBA ───
+            S.listItem()
+              .title('Scuba')
+              .child(
+                S.list()
+                  .title('Scuba')
+                  .items([
+                    S.listItem()
+                      .title('Classes')
+                      .child(S.documentTypeList('scubaClass').title('Classes')),
+                  ])
+              ),
+            S.divider(),
+            // ─── OPERATIONS ───
             S.listItem()
               .title('Operations')
               .child(
@@ -119,6 +132,8 @@ export default defineConfig({
                   .title('Operations')
                   .items([
                     S.listItem().title('Staff').child(S.documentTypeList('staff').title('Staff')),
+                    S.listItem().title('Location').child(S.documentTypeList('location').title('Locations')),
+                    S.listItem().title('Brand Media').child(S.documentTypeList('brandMedia').title('Brand Media')),
                   ])
               ),
           ]),
