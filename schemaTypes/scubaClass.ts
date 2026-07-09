@@ -113,11 +113,11 @@ export default defineType({
     }),
 
     defineField({
-      name: 'cancellationPolicy',
-      title: 'Cancellation Policy',
+      name: 'policies',
+      title: 'Policies',
       type: 'array',
-      of: [{type: 'block'}],
-      description: 'Class-specific cancellation terms (rich text)',
+      of: [{type: 'reference', to: [{type: 'scubaPolicy'}]}],
+      description: 'Link relevant policies that apply to this class',
     }),
 
     defineField({

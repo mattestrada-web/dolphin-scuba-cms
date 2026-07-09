@@ -123,7 +123,7 @@ export default defineConfig({
                       .child(S.documentTypeList('scubaClass').title('Classes')),
                     S.listItem()
                       .title('Policies')
-                      .child(S.documentTypeList('scubaCancellationPolicy').title('Policies')),
+                      .child(S.documentTypeList('scubaPolicy').title('Policies')),
                     S.listItem()
                       .title('Dive Professionals')
                       .child(S.list().title('Dive Professionals').items([])),

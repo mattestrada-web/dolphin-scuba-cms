@@ -20,7 +20,7 @@ import landingPage from './landingPage'
 import product from './product'
 import region from './region'
 import scubaClass from './scubaClass'
-import scubaCancellationPolicy from './scubaCancellationPolicy'
+import scubaPolicy from './scubaPolicy'
 import scubaClassReference from './scubaClassReference'
 import seoPage from './seoPage'
 import spec from './spec'
@@ -75,7 +75,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   carouselSlide as SchemaTypeDefinition,
   // Scuba
   scubaClass as SchemaTypeDefinition,
-  scubaCancellationPolicy as SchemaTypeDefinition,
+  scubaPolicy as SchemaTypeDefinition,
   // Transitional references for swim/classes until canonical types exist
   scubaClassReference as SchemaTypeDefinition,
   swimLessonReference as SchemaTypeDefinition,
