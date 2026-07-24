@@ -88,11 +88,12 @@ export default defineType({
       type: 'boolean',
       initialValue: true,
     }),
+    
     defineField({
       name: 'promotedOnBigCommerce',
       title: 'Promoted on Big Commerce',
       type: 'boolean',
-      initialValue: true,
+      initialValue: false,
     }),
 
 
