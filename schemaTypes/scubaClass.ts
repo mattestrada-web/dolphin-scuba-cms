@@ -89,13 +89,6 @@ export default defineType({
       initialValue: true,
     }),
 
-    defineField({
-      name: 'rstcMedicalFormLink',
-      title: 'RSTC Medical Form Link',
-      type: 'url',
-      description: 'URL to the RSTC medical form (shown when required)',
-      hidden: ({parent}) => !parent?.rstcMedicalFormRequired,
-    }),
 
     defineField({
       name: 'ssiVideoLink',

@@ -7,7 +7,7 @@ export default defineType({
   fields: [
     defineField({
       name: 'name',
-      title: 'Location Name',
+      title: 'Name',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
@@ -32,39 +32,51 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'phone',
-      title: 'Phone',
-      type: 'string',
-    }),
-    defineField({
-      name: 'email',
-      title: 'Email',
-      type: 'string',
-    }),
-    defineField({
       name: 'website',
       title: 'Website',
       type: 'url',
     }),
     defineField({
-      name: 'hours',
-      title: 'Business Hours',
+      name: 'mapUrl',
+      title: 'Google Maps Link',
+      type: 'url',
+    }),
+    defineField({
+      name: 'description',
+      title: 'Description',
       type: 'text',
       rows: 4,
-      description: 'e.g. Mon-Fri 10am-6pm, Sat 9am-5pm, Sun 10am-4pm',
     }),
     defineField({
-      name: 'logo',
-      title: 'Logo',
-      type: 'image',
-      options: {hotspot: true},
+      name: 'parking',
+      title: 'Parking',
+      type: 'text',
+      rows: 4,
+      description: 'Parking instructions and availability',
     }),
     defineField({
-      name: 'logoDark',
-      title: 'Logo (Dark Background)',
-      type: 'image',
-      description: 'Logo variant for dark backgrounds, email headers, etc.',
-      options: {hotspot: true},
+      name: 'restroomsOnsite',
+      title: 'Restrooms Onsite',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'waterTemperatureRange',
+      title: 'Water Temperature Range at Depth',
+      type: 'string',
+      description: 'e.g., "48-55F"',
+    }),
+    defineField({
+      name: 'typicalVisibility',
+      title: 'Typical Visibility',
+      type: 'string',
+      description: 'e.g., "10-25 feet"',
+    }),
+    defineField({
+      name: 'eapLink',
+      title: 'Emergency Action Plan (EAP)',
+      type: 'url',
+      description: 'Link to the EAP document (Google Doc)',
     }),
     defineField({
       name: 'photos',
@@ -84,13 +96,8 @@ export default defineType({
         },
       ],
     }),
-    defineField({
-      name: 'mapUrl',
-      title: 'Google Maps URL',
-      type: 'url',
-    }),
   ],
   preview: {
-    select: {title: 'name', media: 'logo'},
+    select: {title: 'name'},
   },
 })

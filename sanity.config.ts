@@ -126,13 +126,16 @@ export default defineConfig({
                       .child(S.documentTypeList('scubaPolicy').title('Policies')),
                     S.listItem()
                       .title('Dive Professionals')
-                      .child(S.list().title('Dive Professionals').items([])),
+                      .child(S.documentTypeList('diveProfessional').title('Dive Professionals')),
                     S.listItem()
                       .title('Schedules')
-                      .child(S.list().title('Schedules').items([])),
+                      .child(S.documentTypeList('scubaSchedule').title('Schedules')),
                     S.listItem()
                       .title('Locations')
-                      .child(S.list().title('Locations').items([])),
+                      .child(S.documentTypeList('location').title('Locations')),
+                    S.listItem()
+                      .title('Resources')
+                      .child(S.documentTypeList('resource').title('Resources')),
                   ])
               ),
             S.divider(),
@@ -144,7 +147,6 @@ export default defineConfig({
                   .title('Operations')
                   .items([
                     S.listItem().title('Staff').child(S.documentTypeList('staff').title('Staff')),
-                    S.listItem().title('Location').child(S.documentTypeList('location').title('Locations')),
                     S.listItem().title('Brand Media').child(S.documentTypeList('brandMedia').title('Brand Media')),
                   ])
               ),

@@ -19,9 +19,12 @@ import itinerary from './itinerary'
 import landingPage from './landingPage'
 import product from './product'
 import region from './region'
+import diveProfessional from './diveProfessional'
+import resource from './resource'
 import scubaClass from './scubaClass'
 import scubaPolicy from './scubaPolicy'
 import scubaClassReference from './scubaClassReference'
+import scubaSchedule from './scubaSchedule'
 import seoPage from './seoPage'
 import spec from './spec'
 import staff from './staff'
@@ -74,8 +77,11 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   landingPage as SchemaTypeDefinition,
   carouselSlide as SchemaTypeDefinition,
   // Scuba
+  diveProfessional as SchemaTypeDefinition,
+  resource as SchemaTypeDefinition,
   scubaClass as SchemaTypeDefinition,
   scubaPolicy as SchemaTypeDefinition,
+  scubaSchedule as SchemaTypeDefinition,
   // Transitional references for swim/classes until canonical types exist
   scubaClassReference as SchemaTypeDefinition,
   swimLessonReference as SchemaTypeDefinition,

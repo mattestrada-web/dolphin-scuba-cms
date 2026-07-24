@@ -13,10 +13,23 @@ export default defineType({
     }),
 
     defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+      rows: 6,
+    }),
+    defineField({
+      name: 'url',
+      title: 'URL',
+      type: 'url',
+      description: 'Link to the full policy document (e.g., PDF, Google Doc)',
+    }),
+    defineField({
       name: 'body',
-      title: 'Policy Text',
+      title: 'Full Policy Text',
       type: 'text',
       rows: 10,
+      description: 'Optional inline policy text',
     }),
   ],
 
