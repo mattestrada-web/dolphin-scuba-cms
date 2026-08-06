@@ -113,6 +113,14 @@ export default defineType({
     }),
 
     defineField({
+      name: 'digitalMaterials',
+      title: 'Digital Materials',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'product'}]}],
+      description: 'SSI Digital Kits that students should purchase for this class',
+    }),
+
+    defineField({
       name: 'policies',
       title: 'Policies',
       type: 'array',
