@@ -102,6 +102,24 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'retailPrice',
+      title: 'Retail Price',
+      type: 'number',
+      description: 'Retail price excluding tax',
+    }),
+    defineField({
+      name: 'mapPrice',
+      title: 'MAP Price',
+      type: 'number',
+      description: 'Minimum advertised price',
+    }),
+    defineField({
+      name: 'supplierPrice',
+      title: 'Supplier Price',
+      type: 'number',
+      description: 'Cost from supplier',
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'blockContent',
