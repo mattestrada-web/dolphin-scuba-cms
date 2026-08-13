@@ -19,16 +19,16 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'location',
-      title: 'Location',
-      type: 'reference',
-      to: [{type: 'location'}],
+      name: 'locations',
+      title: 'Locations',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'location'}]}],
     }),
     defineField({
-      name: 'instructor',
-      title: 'Instructor',
-      type: 'reference',
-      to: [{type: 'diveProfessional'}],
+      name: 'instructors',
+      title: 'Instructors',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'diveProfessional'}]}],
     }),
     defineField({
       name: 'price',
@@ -66,6 +66,12 @@ export default defineType({
               description: 'e.g., "5:00pm", "9:30pm"',
             }),
             defineField({
+              name: 'location',
+              title: 'Location',
+              type: 'reference',
+              to: [{type: 'location'}],
+            }),
+            defineField({
               name: 'resources',
               title: 'Resources',
               type: 'array',
@@ -80,12 +86,12 @@ export default defineType({
             }),
           ],
           preview: {
-            select: {date: 'date', start: 'startTime', end: 'endTime', notes: 'notes'},
-            prepare({date, start, end, notes}) {
+            select: {date: 'date', start: 'startTime', end: 'endTime', locationName: 'location.name', notes: 'notes'},
+            prepare({date, start, end, locationName, notes}) {
               const time = end ? `${start} - ${end}` : start
               return {
                 title: date || 'TBD',
-                subtitle: [time, notes].filter(Boolean).join(' — '),
+                subtitle: [time, locationName, notes].filter(Boolean).join(' — '),
               }
             },
           },
@@ -147,8 +153,8 @@ export default defineType({
   preview: {
     select: {
       className: 'scubaClass.title',
-      locationName: 'location.name',
-      instructorName: 'instructor.name',
+      locationName: 'locations.0.name',
+      instructorName: 'instructors.0.name',
       status: 'status',
       firstDate: 'days.0.date',
       lastDate: 'days.-1.date',
