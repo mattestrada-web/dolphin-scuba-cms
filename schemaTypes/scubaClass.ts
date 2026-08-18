@@ -61,6 +61,30 @@ export default defineType({
     }),
 
     defineField({
+      name: 'ssiCourseUid',
+      title: 'SSI Course UID',
+      type: 'string',
+      description: 'SSI digital course ID (e.g. "12378") — links eLearning progress',
+      readOnly: true,
+    }),
+
+    defineField({
+      name: 'ssiShortCode',
+      title: 'SSI Short Code',
+      type: 'string',
+      description: 'SSI course short code (e.g. "SC-SHA", "OWD")',
+      readOnly: true,
+    }),
+
+    defineField({
+      name: 'ssiSku',
+      title: 'SSI SKU',
+      type: 'string',
+      description: 'SSI product SKU (e.g. "93700718")',
+      readOnly: true,
+    }),
+
+    defineField({
       name: 'skillLevel',
       title: 'Skill Level',
       type: 'string',
