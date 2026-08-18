@@ -86,6 +86,14 @@ export default defineType({
     }),
 
     defineField({
+      name: 'featured',
+      title: 'Featured',
+      type: 'boolean',
+      description: 'Highlight this class in the featured hero section',
+      initialValue: false,
+    }),
+
+    defineField({
       name: 'professionalEligible',
       title: 'Specialty Instructor Eligible',
       type: 'boolean',
