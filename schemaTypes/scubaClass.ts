@@ -61,6 +61,31 @@ export default defineType({
     }),
 
     defineField({
+      name: 'program',
+      title: 'Program',
+      type: 'string',
+      description: 'SSI program category (e.g. Diving Program, Ecology Program)',
+      options: {
+        list: [
+          {title: 'Diving Program', value: 'Diving Program'},
+          {title: 'Ecology Program', value: 'Ecology Program'},
+          {title: 'Freediving Program', value: 'Freediving Program'},
+          {title: 'Mermaid Program', value: 'Mermaid Program'},
+          {title: 'Explorers Program', value: 'Explorers Program'},
+          {title: 'Swim Program', value: 'Swim Program'},
+          {title: 'Swim Teacher Program', value: 'Swim Teacher Program'},
+          {title: 'Snorkel Program', value: 'Snorkel Program'},
+          {title: 'React Right Program', value: 'React Right Program'},
+          {title: 'Rebreather Diver Program', value: 'Rebreather Diver Program'},
+          {title: 'Lifeguard Program', value: 'Lifeguard Program'},
+          {title: 'Lifeguard Leader Program', value: 'Lifeguard Leader Program'},
+          {title: 'Classified Diver Program', value: 'Classified Diver Program'},
+          {title: 'XR/TXR Program', value: 'XR/TXR Program'},
+        ],
+      },
+    }),
+
+    defineField({
       name: 'ssiCourseUid',
       title: 'SSI Course UID',
       type: 'string',
