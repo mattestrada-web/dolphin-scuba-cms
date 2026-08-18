@@ -86,6 +86,14 @@ export default defineType({
     }),
 
     defineField({
+      name: 'professionalEligible',
+      title: 'Specialty Instructor Eligible',
+      type: 'boolean',
+      description: 'Can certify Specialty Instructors — cross-listed under Professional Program',
+      initialValue: false,
+    }),
+
+    defineField({
       name: 'ssiCourseUid',
       title: 'SSI Course UID',
       type: 'string',
