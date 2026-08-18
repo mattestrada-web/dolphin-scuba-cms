@@ -129,6 +129,29 @@ export default defineType({
     }),
 
     defineField({
+      name: 'classCodePrefix',
+      title: 'Class Code Prefix',
+      type: 'string',
+      description: 'Two-letter prefix for auto-generating class codes (e.g. OW, AA)',
+      validation: (Rule) => Rule.max(8),
+    }),
+
+    defineField({
+      name: 'defaultPrice',
+      title: 'Default Price',
+      type: 'number',
+      description: 'Default price in cents (e.g. 39900 = $399.00)',
+    }),
+
+    defineField({
+      name: 'maxStudents',
+      title: 'Max Students',
+      type: 'number',
+      description: 'Default maximum students per schedule',
+      validation: (Rule) => Rule.min(1),
+    }),
+
+    defineField({
       name: 'sawyerWidgetEmbed',
       title: 'Sawyer Widget Embed Code',
       type: 'text',

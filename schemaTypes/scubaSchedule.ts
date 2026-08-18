@@ -10,6 +10,7 @@ export default defineType({
       title: 'Class Code',
       type: 'string',
       description: 'Short unique identifier (e.g., OW-0714-ME)',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'scubaClass',
@@ -33,8 +34,8 @@ export default defineType({
     defineField({
       name: 'price',
       title: 'Price',
-      type: 'string',
-      description: 'e.g., "$399", "$1,650"',
+      type: 'number',
+      description: 'Price in cents (e.g. 39900 = $399.00)',
     }),
     defineField({
       name: 'days',
@@ -56,14 +57,14 @@ export default defineType({
               name: 'startTime',
               title: 'Start Time',
               type: 'string',
-              description: 'e.g., "9:00am", "5:30pm"',
+              description: '24-hour format HH:MM (e.g. "09:00", "17:30")',
               validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: 'endTime',
               title: 'End Time',
               type: 'string',
-              description: 'e.g., "5:00pm", "9:30pm"',
+              description: '24-hour format HH:MM (e.g. "17:00", "21:30")',
             }),
             defineField({
               name: 'location',
@@ -97,11 +98,14 @@ export default defineType({
           },
         },
       ],
+      validation: (Rule) => Rule.required().min(1),
     }),
     defineField({
-      name: 'openSpots',
-      title: 'Open Spots',
+      name: 'maxStudents',
+      title: 'Max Students',
       type: 'number',
+      description: 'Maximum number of students (overrides class default)',
+      validation: (Rule) => Rule.min(1),
     }),
     defineField({
       name: 'hasWaitlist',
