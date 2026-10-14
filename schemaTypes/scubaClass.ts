@@ -61,6 +61,13 @@ export default defineType({
     }),
 
     defineField({
+      name: 'explorerThumbnail',
+      title: 'Explorer Thumbnail',
+      type: 'url',
+      description: 'Alternate thumbnail image for Explorer (EX) designated schedules',
+    }),
+
+    defineField({
       name: 'program',
       title: 'Program',
       type: 'string',
