@@ -139,8 +139,7 @@ export default defineType({
       options: {
         list: [
           {title: 'Beginner', value: 'beginner'},
-          {title: 'Intermediate', value: 'intermediate'},
-          {title: 'Advanced', value: 'advanced'},
+          {title: 'Continuing Education', value: 'continuing_education'},
           {title: 'Professional', value: 'professional'},
         ],
       },
@@ -160,7 +159,14 @@ export default defineType({
       type: 'boolean',
       initialValue: true,
     }),
-    
+
+    defineField({
+      name: 'rstcMedicalFormLink',
+      title: 'RSTC Medical Form Link',
+      type: 'url',
+      description: 'URL to the downloadable RSTC medical form PDF',
+    }),
+
     defineField({
       name: 'promotedOnBigCommerce',
       title: 'Promoted on Big Commerce',
@@ -212,7 +218,7 @@ export default defineType({
       name: 'defaultPrice',
       title: 'Default Price',
       type: 'number',
-      description: 'Default price in cents (e.g. 39900 = $399.00)',
+      description: 'Default tuition price in dollars (e.g. 399 = $399.00)',
     }),
 
     defineField({
@@ -240,8 +246,7 @@ export default defineType({
     prepare({title, level}: any) {
       const levels: Record<string, string> = {
         beginner: 'Beginner',
-        intermediate: 'Intermediate',
-        advanced: 'Advanced',
+        continuing_education: 'Continuing Education',
         professional: 'Professional',
       }
       return {
