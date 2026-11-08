@@ -83,8 +83,42 @@ export default defineType({
               name: 'resources',
               title: 'Resources',
               type: 'array',
-              of: [{type: 'reference', to: [{type: 'resource'}]}],
-              description: 'Which resources are needed for this day (Pool, Classroom, etc.)',
+              of: [
+                {
+                  type: 'object',
+                  name: 'resourceBooking',
+                  title: 'Resource Booking',
+                  fields: [
+                    defineField({
+                      name: 'resource',
+                      title: 'Resource',
+                      type: 'reference',
+                      to: [{type: 'resource'}],
+                      validation: (Rule) => Rule.required(),
+                    }),
+                    defineField({
+                      name: 'startTime',
+                      title: 'Start Time',
+                      type: 'string',
+                      description: '24-hour format HH:MM',
+                    }),
+                    defineField({
+                      name: 'endTime',
+                      title: 'End Time',
+                      type: 'string',
+                      description: '24-hour format HH:MM',
+                    }),
+                  ],
+                  preview: {
+                    select: {name: 'resource.name', start: 'startTime', end: 'endTime'},
+                    prepare({name, start, end}: any) {
+                      const time = start && end ? `${start} – ${end}` : start || end || ''
+                      return {title: name || 'Resource', subtitle: time}
+                    },
+                  },
+                },
+              ],
+              description: 'Which resources are booked for this day, with time allocations',
             }),
             defineField({
               name: 'notes',
