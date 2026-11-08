@@ -13,6 +13,13 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+      description: 'Auto-generated schedule title (e.g. "SSI Open Water Diver: Nov 19, 2026 with Julie Estrada")',
+      readOnly: true,
+    }),
+    defineField({
       name: 'scubaClass',
       title: 'Class',
       type: 'reference',
@@ -108,6 +115,13 @@ export default defineType({
       validation: (Rule) => Rule.min(1),
     }),
     defineField({
+      name: 'openSpots',
+      title: 'Open Spots',
+      type: 'number',
+      description: 'Available spots remaining (synced from Flipper2)',
+      readOnly: true,
+    }),
+    defineField({
       name: 'hasWaitlist',
       title: 'Has Waitlist',
       type: 'boolean',
@@ -132,6 +146,19 @@ export default defineType({
       type: 'boolean',
       description: 'Private class — not shown on public schedule',
       initialValue: false,
+    }),
+    defineField({
+      name: 'designation',
+      title: 'Designation',
+      type: 'string',
+      description: 'Schedule designation (e.g. EX for Explorer)',
+    }),
+    defineField({
+      name: 'lsProductId',
+      title: 'Lightspeed Product ID',
+      type: 'string',
+      description: 'Linked Lightspeed product UUID',
+      readOnly: true,
     }),
     defineField({
       name: 'status',
