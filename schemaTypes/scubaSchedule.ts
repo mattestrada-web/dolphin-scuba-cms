@@ -207,6 +207,12 @@ export default defineType({
       description: 'Text overlay on thumbnail (e.g. "SALE", "$49.97")',
     }),
     defineField({
+      name: 'promoPrice',
+      title: 'Promo Price',
+      type: 'number',
+      description: 'Promotional price in cents (e.g. 4997 = $49.97). Overrides schedule price when set.',
+    }),
+    defineField({
       name: 'status',
       title: 'Status',
       type: 'string',
