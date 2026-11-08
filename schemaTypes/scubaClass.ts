@@ -183,6 +183,20 @@ export default defineType({
     }),
 
     defineField({
+      name: 'digitalKitRequirement',
+      title: 'Digital Kit Requirement',
+      type: 'string',
+      description: 'How the SSI Digital Learning Kit applies to this class',
+      options: {
+        list: [
+          {title: 'Required — must complete before class', value: 'required'},
+          {title: 'Recommended learning enhancement', value: 'recommended'},
+          {title: 'No digital kit', value: 'none'},
+        ],
+      },
+    }),
+
+    defineField({
       name: 'whatToBring',
       title: 'What to Bring',
       type: 'array',

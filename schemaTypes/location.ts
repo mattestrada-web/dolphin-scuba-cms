@@ -12,6 +12,20 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'locationType',
+      title: 'Location Type',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Store', value: 'store'},
+          {title: 'Shore', value: 'shore'},
+          {title: 'Boat', value: 'boat'},
+          {title: 'Resort', value: 'resort'},
+          {title: 'Online', value: 'online'},
+        ],
+      },
+    }),
+    defineField({
       name: 'address',
       title: 'Street Address',
       type: 'string',
