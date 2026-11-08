@@ -195,6 +195,18 @@ export default defineType({
       readOnly: true,
     }),
     defineField({
+      name: 'promoLabel',
+      title: 'Promo Label',
+      type: 'string',
+      description: 'Promotion name (e.g. "Black Friday", "Holiday Special") — also used as a filter for marketing campaigns',
+    }),
+    defineField({
+      name: 'promoBadge',
+      title: 'Promo Badge',
+      type: 'string',
+      description: 'Text overlay on thumbnail (e.g. "SALE", "$49.97")',
+    }),
+    defineField({
       name: 'status',
       title: 'Status',
       type: 'string',
