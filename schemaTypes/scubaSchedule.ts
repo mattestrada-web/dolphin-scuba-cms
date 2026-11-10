@@ -213,6 +213,13 @@ export default defineType({
       description: 'Promotional price in cents (e.g. 4997 = $49.97). Overrides schedule price when set.',
     }),
     defineField({
+      name: 'policies',
+      title: 'Policies',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'scubaPolicy'}]}],
+      description: 'Override class-level policies for this schedule. If empty, inherits from the linked class.',
+    }),
+    defineField({
       name: 'status',
       title: 'Status',
       type: 'string',

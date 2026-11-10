@@ -221,6 +221,23 @@ export default defineType({
     }),
 
     defineField({
+      name: 'specialtyEquipmentRequired',
+      title: 'Specialty Equipment Required',
+      type: 'boolean',
+      description: 'Class requires specialty equipment beyond standard rental gear',
+      initialValue: false,
+    }),
+
+    defineField({
+      name: 'specialtyEquipment',
+      title: 'Specialty Equipment',
+      type: 'text',
+      description: 'Equipment students must purchase before class (e.g. primary dive light, backup dive light, tank light)',
+      rows: 2,
+      hidden: ({parent}: any) => !parent?.specialtyEquipmentRequired,
+    }),
+
+    defineField({
       name: 'classCodePrefix',
       title: 'Class Code Prefix',
       type: 'string',
