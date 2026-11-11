@@ -25,6 +25,13 @@ export default defineType({
       description: 'Link to the full policy document (e.g., PDF, Google Doc)',
     }),
     defineField({
+      name: 'urlText',
+      title: 'URL Text',
+      type: 'string',
+      description: 'Clickable link text displayed at the end of the policy body (e.g., "Learn more about DiveAssure coverage")',
+      hidden: ({parent}: any) => !parent?.url,
+    }),
+    defineField({
       name: 'body',
       title: 'Full Policy Text',
       type: 'text',
