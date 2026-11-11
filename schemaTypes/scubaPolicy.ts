@@ -19,17 +19,26 @@ export default defineType({
       rows: 6,
     }),
     defineField({
+      name: 'document',
+      title: 'Document',
+      type: 'file',
+      description: 'Upload a PDF or other document (stored in Sanity CDN)',
+      options: {
+        accept: '.pdf,.doc,.docx',
+      },
+    }),
+    defineField({
       name: 'url',
       title: 'URL',
       type: 'url',
-      description: 'Link to the full policy document (e.g., PDF, Google Doc)',
+      description: 'Link to external policy document — or leave blank to use the uploaded document above',
     }),
     defineField({
       name: 'urlText',
       title: 'URL Text',
       type: 'string',
       description: 'Clickable link text displayed at the end of the policy body (e.g., "Learn more about DiveAssure coverage")',
-      hidden: ({parent}: any) => !parent?.url,
+      hidden: ({parent}: any) => !parent?.url && !parent?.document,
     }),
     defineField({
       name: 'body',
