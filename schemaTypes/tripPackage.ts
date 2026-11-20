@@ -66,6 +66,13 @@ export default defineType({
       of: [{type: 'string'}],
     }),
     defineField({
+      name: 'scubagoFeatured',
+      title: 'ScubaGo Featured',
+      type: 'boolean',
+      description: 'Use this package as the "starting from" price on ScubaGo. Fallback: cheapest diver package.',
+      initialValue: false,
+    }),
+    defineField({
       name: 'wetravel',
       title: 'WeTravel',
       type: 'object',

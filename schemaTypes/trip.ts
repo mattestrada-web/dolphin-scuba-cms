@@ -65,6 +65,14 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'shortDescription',
+      title: 'Short Description',
+      type: 'text',
+      rows: 3,
+      description: 'Marketing hook for ScubaGo, website, emails. Keep under 200 characters.',
+      validation: (Rule) => Rule.max(200),
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'blockContent',

@@ -98,6 +98,17 @@ export default defineType({
         {name: 'lastSyncedAt', type: 'datetime', title: 'Last Synced'},
       ],
     }),
+    defineField({
+      name: 'scubago',
+      title: 'ScubaGo',
+      type: 'object',
+      options: {collapsible: true, collapsed: true},
+      fields: [
+        {name: 'offer_id', type: 'number', title: 'Offer ID'},
+        {name: 'product_id', type: 'number', title: 'Product ID'},
+        {name: 'published_at', type: 'datetime', title: 'Published At'},
+      ],
+    }),
   ],
   preview: {
     select: {
