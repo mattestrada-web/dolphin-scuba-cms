@@ -51,6 +51,18 @@ export default defineType({
       validation: (Rule) => Rule.min(0),
     }),
     defineField({
+      name: 'waterTemp',
+      title: 'Water Temperature',
+      type: 'string',
+      description: 'e.g. 72-78°F',
+    }),
+    defineField({
+      name: 'visibility',
+      title: 'Visibility',
+      type: 'string',
+      description: 'e.g. 50-100 ft',
+    }),
+    defineField({
       name: 'skillLevel',
       title: 'Skill Level',
       type: 'string',
