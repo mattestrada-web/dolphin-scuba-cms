@@ -36,6 +36,14 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'shortDescription',
+      title: 'Short Description',
+      type: 'text',
+      rows: 3,
+      description: 'Marketing hook — max 200 characters.',
+      validation: (Rule) => Rule.max(200),
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'blockContent',
@@ -46,6 +54,12 @@ export default defineType({
       type: 'array',
       description: 'Destinations this vessel or resort serves.',
       of: [{type: 'reference', to: [{type: 'destination'}]}],
+    }),
+    defineField({
+      name: 'address',
+      title: 'Address',
+      type: 'string',
+      description: 'Full address or location description',
     }),
     defineField({
       name: 'amenities',
@@ -61,11 +75,16 @@ export default defineType({
       validation: (Rule) => Rule.min(0),
     }),
     defineField({
-      name: 'cabinTypes',
-      title: 'Cabin Types',
+      name: 'websiteUrl',
+      title: 'Website URL',
+      type: 'url',
+    }),
+    defineField({
+      name: 'roomTypes',
+      title: 'Room / Cabin Types',
       type: 'array',
       of: [{type: 'string'}],
-      description: 'e.g. Standard, Deluxe, Suite',
+      description: 'e.g. Standard, Deluxe, Suite, Ocean Front',
     }),
     defineField({
       name: 'media',
