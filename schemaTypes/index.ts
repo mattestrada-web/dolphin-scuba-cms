@@ -36,6 +36,7 @@ import trip from './trip'
 import tripInclusion from './tripInclusion'
 import tripPackage from './tripPackage'
 import useCase from './useCase'
+import liveaboardItinerary from './liveaboardItinerary'
 import vessel from './vessel'
 import location from './location'
 import brandMedia from './brandMedia'
@@ -66,6 +67,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   region as SchemaTypeDefinition,
   travelTheme as SchemaTypeDefinition,
   vessel as SchemaTypeDefinition,
+  liveaboardItinerary as SchemaTypeDefinition,
   tripPackage as SchemaTypeDefinition,
   addOn as SchemaTypeDefinition,
   itinerary as SchemaTypeDefinition,
